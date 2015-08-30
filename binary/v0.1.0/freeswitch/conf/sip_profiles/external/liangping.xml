@@ -1,0 +1,11 @@
+
+
+<include>
+    <gateway name="51536924">
+            <param name="username" value="51536924"/>
+            <param name="password" value="810995957359"/>
+            <param name="realm" value="222.73.68.45"/>
+            <param name="proxy" value="222.73.68.45"/>
+	    <param name="expire-seconds" value="60"/>
+     </gateway>
+</include>
