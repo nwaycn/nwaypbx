@@ -1,6 +1,12 @@
 # nwaypbx
 Our plan is to develop a first based on the Chinese PBX, and the world's first c/c++ with ESL control FreeSWITCH as a PBX, it is an open source project.
 
+License： GPL
+
+author: Li hao 
+
+email: lihao@nway.com.cn
+
 
 You can see demo:  http://121.40.240.104:8088/admin/  ,the username:lihao, password:123456
 
