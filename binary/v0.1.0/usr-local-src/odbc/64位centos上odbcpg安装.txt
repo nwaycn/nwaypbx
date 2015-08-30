@@ -1,0 +1,63 @@
+1，64位系统下，postgresql 的psqlodbc驱动下载地址
+   http://www.postgresql.org/ftp/odbc/versions/src/
+2，64位系统下，安装psqlodbc需要的安装包：
+    unixODBC-2.3.1.tar.gz
+    psqlodbc-09.01.0100.tar.gz  
+3，安装unixODBC
+    tar zxvf unixODBC-2.3.1.tar.gz
+    cd unixODBC-2.3.1
+    ./configure --enable-gui=no
+    make
+    make install
+4，安装psqlodbc
+    unixODBC提供了Linux对ODBC的支持，但它只是一个ODBC的管理器，要连接实际的数据库还需要提供这种数据库的ODBC驱动
+    psqlodbc就是Linux下用于连接postgresql的免费ODBC驱动
+    注意： 必须先装unixODBC,再安装psqlodbc
+    tar zxvf psqlodbc-09.01.0100.tar.gz
+    cd psqlodbc-09.01.0100
+    ./configure --with-unixodbc --with-libpq=/usr/local/pgsql
+    make
+    make install
+5，配置ODBC (以下提供一个样本)
+    vi /etc/odbcinst.ini
+    [PostgresSQL]
+    Description     = ODBC for PostgresSQL
+    Driver          =
+    Driver64        = /usr/local/lib/psqlodbcw.so
+    Setup           =
+    Setup64         =
+    FileUsage       = 1
+    CpTimeout       =
+    CpReuse         =   
+    cp  /etc/odbcinst.ini /usr/local/etc/odbcinst.ini
+    vi /etc/odbc.ini
+    [tmau_psv3]
+    Description     = tmau_psv3
+    Driver          = PostgresSQL
+    Trace           = No
+    TraceFile       =
+    Database        = tmau_psv3
+    Servername      = 192.168.51.97
+    Username        = pgadmin
+    Password        = kgpgadmin
+    Port            = 5432
+    Protocol        = 6.4
+    ReadOnly        = No
+    RowVersioning   = No
+    ShowSystemTables    = No
+    ShowOidColumn       = No
+    FakeOidIndex        = No
+    ConnSettings    =
+    cp /etc/odbc.ini /usr/local/etc/odbc.ini
+6，用ODBC提供的isql工具检查odbc驱动与DNS是否配置成功
+    [root@r710-64c6 64bits_install]# isql -v tmau_psv3
+    +---------------------------------------+
+    | Connected!                            |
+    |                                       |
+    | sql-statement                         |
+    | help [tablename]                      |
+    | quit                                  |
+    |                                       |
+    +---------------------------------------+
+    SQL> 
+    形如以上现象，表示psqlodbc配置成功。

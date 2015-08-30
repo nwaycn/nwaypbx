@@ -1,0 +1,6 @@
+killall nwaycc
+cd ..
+git pull
+make
+cd Debug
+./nwaycc
