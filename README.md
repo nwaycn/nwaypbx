@@ -9,3 +9,7 @@ Since the v0.1.0 version of the current binary uses a part of the third party's 
 1. need you to install postgresql
 
 you can look this:http://nway.com.cn/t8.html
+
+2. need you install bakefile
+
+you can look this:http://nway.com.cn/t9.html
