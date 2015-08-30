@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]; then
+   echo "Usage: $0 [debug | release]"
+   exit 0
+else
+   type="$1"
+fi
+
+WX_DEFINES="-I/usr/local/share/bakefile -DWX_UNICODE=1"
+
+if [ "$type" = "debug" ]; then
+    bakefile build.bkl -f gnu -o Makefile -DBUILD=debug -DBUILDDIR=Debug -DWX_SHARED=0 $WX_DEFINES
+else
+    bakefile build.bkl -f gnu -o Makefile -DBUILD=release -DBUILDDIR=Release -DWWX_SHARED=0 $WX_DEFINES
+fi

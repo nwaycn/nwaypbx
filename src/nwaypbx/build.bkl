@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<!-- $Id: bakefile_quickstart.txt,v 1.5 2006/02/11 18:41:11 KO Exp $ -->
+
+<makefile>
+
+
+    <set var="DEBUGINFO">
+        <if cond="BUILD=='debug'">on</if>
+        <if cond="BUILD=='release'">off</if>
+    </set>
+
+    <set var="DEBUGRUNTIME">
+        <if cond="BUILD=='debug'">on</if>
+        <if cond="BUILD=='release'">off</if>
+    </set>
+
+    <set var="OPTIMIZEFLAG">
+        <if cond="BUILD=='debug'">off</if>
+        <if cond="BUILD=='release'">speed</if>
+    </set>
+
+    <set var="WARNINGS">
+        <if cond="BUILD=='debug'">max</if>
+        <if cond="BUILD=='release'">no</if>
+    </set>
+
+    <set var="RUNTIMELIBRARY">
+        <if cond="BUILD=='debug'">dynamic</if>
+        <if cond="BUILD=='release'">static</if>
+    </set>
+     <template id="esl">
+        <debug-info>$(DEBUGINFO)</debug-info>
+        <debug-runtime-libs>$(DEBUGRUNTIME)</debug-runtime-libs>
+        <optimize>$(OPTIMIZEFLAG)</optimize>
+        <warnings>$(WARNINGS)</warnings>
+
+        <if cond="FORMAT=='msvc'">
+                <include>D:\libs\sqlapi\include</include>
+                <lib-path>D:\libs\sqlapi\lib</lib-path>
+        </if>
+        <if cond="FORMAT=='gnu'">
+                <include>/home/works/calloutcenter/nwaycc/esl</include>
+                <lib-path> /usr/local/src/freeswitch/libs/esl</lib-path>
+                <lib-path>/usr/local/pgsql/lib</lib-path>
+        </if>
+        <runtime-libs>$(RUNTIMELIBRARY)</runtime-libs>
+
+    </template>
+   
+    
+     
+
+    <template id="mfc">
+        <debug-info>$(DEBUGINFO)</debug-info>
+        <debug-runtime-libs>$(DEBUGRUNTIME)</debug-runtime-libs>
+        <optimize>$(OPTIMIZEFLAG)</optimize>
+        <warnings>$(WARNINGS)</warnings>
+       
+        <if cond="BUILD=='release'">
+            <threading>multi</threading>
+            <ldflags>uafxcw.lib libcmt.lib</ldflags>
+        </if>
+        <if cond="BUILD=='debug'">
+            <define>_AFXDLL</define>
+        </if>
+        <ldflags>/entry:"wWinMainCRTStartup"</ldflags>
+        <runtime-libs>$(RUNTIMELIBRARY)</runtime-libs>
+    </template>
+   
+   
+    <exe id="nwaycc" template="sqlapi,esl">
+        <app-type>console</app-type>
+	 
+	    <sources>$(fileList('*.cpp'))</sources>
+        <debug-info>$(DEBUGINFO)</debug-info>
+        <debug-runtime-libs>$(DEBUGRUNTIME)</debug-runtime-libs>
+        <optimize>$(OPTIMIZEFLAG)</optimize>
+        <warnings>$(WARNINGS)</warnings>
+        <if cond="FORMAT=='msvc'">
+		
+	     
+            <if cond="BUILD=='release'">
+                <threading>multi</threading>
+            </if>
+        
+        </if>
+        <if cond="FORMAT=='gnu'">
+            
+            <sys-lib>pq</sys-lib>
+	        <sys-lib>sqlapi</sys-lib>
+            <sys-lib>pcre</sys-lib>
+	        <sys-lib>pthread</sys-lib>
+	        <sys-lib>esl</sys-lib>
+	        <sys-lib>m</sys-lib>
+	        <sys-lib>dl</sys-lib>
+        </if>
+	
+        
+    </exe>
+
+    
+
+</makefile>
