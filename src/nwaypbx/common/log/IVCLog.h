@@ -1,20 +1,15 @@
-/***************************************************************
-* Author：		lihao
-* Company：		nway							  			
-* Last Update：	2011-03-17		 								
-* Copyright(c)
-*------------------------------------------------------------ 	
-* FileName：		IVCLog.h
-* Function Note：	Sys Log implementation.
-* Update note：		
-*****************************************************************/
-
-//Level 1：正常流程不应该发生的故障：如new操作失败，文件IO操作失败，异常退出等等；
-//Level 2：参数有效性判断，以及指针NULL判断为不符和规则；
-//Level 3: 函数中途异常返回；
-//Level 4: 命令消息的打印输出；
-//Level 5: 程序流程中重要变量内容的调试输出；
-//默认日志级别是3，按天产生日志，日志记录加时间戳;如果没有设置FileByDay|FileByName选项，默认为DisplayScreen即输出到屏幕
+/*************************************************************************
+based for NwayPBX
+Copyright (C) 2015-, Li hao <lihao@nway.com.cn>
+License： GPL
+author: Li hao
+email: lihao@nway.com.cn
+The Initial Developer of the Original Code is
+Li hao<lihao@nway.com.cn>
+Portions created by the Initial Developer are Copyright (C)
+the Initial Developer. All Rights Reserved.
+Contributor(s):
+**************************************************************************/
 
 #ifndef  _IV_CLOG_H_
 #define  _IV_CLOG_H_

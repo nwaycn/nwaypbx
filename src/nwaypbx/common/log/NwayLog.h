@@ -1,9 +1,21 @@
 #ifndef __SG_LOG_H____
 #define __SG_LOG_H____
+/*************************************************************************
+based for NwayPBX
+Copyright (C) 2015-, Li hao <lihao@nway.com.cn>
+License： GPL
+author: Li hao
+email: lihao@nway.com.cn
+The Initial Developer of the Original Code is
+Li hao<lihao@nway.com.cn>
+Portions created by the Initial Developer are Copyright (C)
+the Initial Developer. All Rights Reserved.
+Contributor(s):
+**************************************************************************/
 //////////////////////////////////////////////////////////////////////////
 //用于生成跨平台的日志库
 //author:lihao
-//date:2011-3-16
+//date:2006-3-16
 #include <stdexcept>
 #include <string>
 #include <iostream>
