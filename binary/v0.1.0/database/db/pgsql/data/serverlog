@@ -1,0 +1,2024 @@
+LOG:  database system was shut down at 2015-02-27 11:14:42 CST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2015-02-27 11:38:20 CST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  terminating connection due to administrator command
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+FATAL:  terminating connection due to administrator command
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2015-02-27 14:12:58 CST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "nwaycc-dev" does not exist
+ERROR:  column "dialplan_detail_group_id" does not exist at character 97
+STATEMENT:  select dialplan_id ,id,dialplan_detail_tag, dialplan_detail_data  , 			dialplan_detail_inline  ,dialplan_detail_group_id  ,dialplan_detail_order  , 			dialplan_detail_break  ,dialplan_detail_type_id,ring_id    from call_dialplan_details group by dialplan_id,id order by dialplan_detail_order;
+ERROR:  column "is_disable" does not exist at character 205
+STATEMENT:  select id,extension_name,extension_number,callout_number,extension_type, 						   group_id, extension_login_state, extension_reg_state, callout_gateway, 						   is_allow_callout,extension_pswd,is_record,is_disable from call_extension order by id;
+ERROR:  column "dialplan_detail_group_id" does not exist at character 97
+STATEMENT:  select dialplan_id ,id,dialplan_detail_tag, dialplan_detail_data  , 			dialplan_detail_inline  ,dialplan_detail_group_id  ,dialplan_detail_order  , 			dialplan_detail_break  ,dialplan_detail_type_id,ring_id    from call_dialplan_details group by dialplan_id,id order by dialplan_detail_order;
+ERROR:  column "is_disable" does not exist at character 205
+STATEMENT:  select id,extension_name,extension_number,callout_number,extension_type, 						   group_id, extension_login_state, extension_reg_state, callout_gateway, 						   is_allow_callout,extension_pswd,is_record,is_disable from call_extension order by id;
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  cannot drop sequence auth_group_id_seq because other objects depend on it
+DETAIL:  default for table auth_group column id depends on sequence auth_group_id_seq
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  DROP SEQUENCE "public"."auth_group_id_seq"
+ERROR:  relation "auth_group_id_seq" already exists
+STATEMENT:  CREATE SEQUENCE "public"."auth_group_id_seq"
+	 INCREMENT 1
+	 MINVALUE 1
+	 MAXVALUE 9223372036854775807
+	 START 1
+	 CACHE 1
+	
+FATAL:  terminating autovacuum process due to administrator command
+ERROR:  database "nwaycc" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE "nwaycc"
+FATAL:  terminating autovacuum process due to administrator command
+ERROR:  database "nwaycc" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE "nwaycc"
+ERROR:  database "nwaycc" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE nwaycc;
+	
+ERROR:  database "nwaycc" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE "nwaycc"
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+FATAL:  terminating connection due to administrator command
+LOG:  autovacuum launcher shutting down
+FATAL:  terminating connection due to administrator command
+FATAL:  terminating connection due to administrator command
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2015-02-27 18:06:32 CST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  sequence "auth_group_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."auth_group_id_seq"
+ERROR:  sequence "auth_group_permissions_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."auth_group_permissions_id_seq"
+ERROR:  sequence "auth_permission_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."auth_permission_id_seq"
+ERROR:  sequence "auth_user_groups_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."auth_user_groups_id_seq"
+ERROR:  sequence "auth_user_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."auth_user_id_seq"
+ERROR:  sequence "auth_user_user_permissions_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."auth_user_user_permissions_id_seq"
+ERROR:  sequence "call_afteropt_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_afteropt_id_seq"
+ERROR:  sequence "call_cdr_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_cdr_id_seq"
+ERROR:  sequence "call_click_dial_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_click_dial_id_seq"
+ERROR:  sequence "call_concurr_type_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_concurr_type_id_seq"
+ERROR:  sequence "call_dialplan_details_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_dialplan_details_id_seq"
+ERROR:  sequence "call_dialplans_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_dialplans_id_seq"
+ERROR:  sequence "call_extension_groups_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_extension_groups_id_seq"
+ERROR:  sequence "call_extension_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_extension_id_seq"
+ERROR:  sequence "call_extension_type_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_extension_type_id_seq"
+ERROR:  sequence "call_functions_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_functions_id_seq"
+ERROR:  sequence "call_gateway_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_gateway_id_seq"
+ERROR:  sequence "call_group_callout_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_group_callout_id_seq"
+ERROR:  sequence "call_group_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_group_id_seq"
+ERROR:  sequence "call_in_out_event_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_in_out_event_id_seq"
+ERROR:  sequence "call_ivr_menu_options_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_ivr_menu_options_id_seq"
+ERROR:  sequence "call_ivr_menus_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_ivr_menus_id_seq"
+ERROR:  sequence "call_operation_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_operation_id_seq"
+ERROR:  sequence "call_out_numbers_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_out_numbers_id_seq"
+ERROR:  sequence "call_outside_config_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_outside_config_id_seq"
+ERROR:  sequence "call_rings_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_rings_id_seq"
+ERROR:  sequence "call_time_plan_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_time_plan_id_seq"
+ERROR:  sequence "call_voice_verify_code_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_voice_verify_code_id_seq"
+ERROR:  sequence "call_voicemail_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."call_voicemail_id_seq"
+ERROR:  sequence "django_admin_log_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."django_admin_log_id_seq"
+ERROR:  sequence "django_content_type_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."django_content_type_id_seq"
+ERROR:  sequence "in_out_mapping_id_seq" does not exist
+STATEMENT:  DROP SEQUENCE "public"."in_out_mapping_id_seq"
+ERROR:  column "call_extension" of relation "call_extension" does not exist at character 30
+STATEMENT:  update call_extension set 
+	 call_extension.extension_pswd='12345yuiop';
+	 
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1006','', 4,current_timestamp,False,669,0, '*7818621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1006','', 4,current_timestamp,False,670,0, '7218621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1006','', 4,current_timestamp,False,671,0, '7318621575908')
+	
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection reset by peer
+LOG:  autovacuum launcher shutting down
+FATAL:  terminating connection due to administrator command
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2015-03-01 16:38:38 CST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+LOG:  received smart shutdown request
+FATAL:  terminating connection due to administrator command
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2015-04-05 10:57:43 CST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  stats_timestamp 2015-04-05 10:57:43.879467+08 is later than collector's time 2015-04-05 10:50:55.375256+08 for db 0
+LOG:  stats collector's time 2015-04-05 10:57:43.879467+08 is later than backend local time 2015-04-05 10:51:15.757542+08
+LOG:  stats_timestamp 2015-04-05 10:57:43.879467+08 is later than collector's time 2015-04-05 10:51:15.757668+08 for db 17159
+LOG:  stats collector's time 2015-04-05 10:57:43.879467+08 is later than backend local time 2015-04-05 10:51:35.596071+08
+LOG:  stats_timestamp 2015-04-05 10:57:43.879467+08 is later than collector's time 2015-04-05 10:51:35.596188+08 for db 12896
+LOG:  stats collector's time 2015-04-05 10:57:43.879467+08 is later than backend local time 2015-04-05 10:51:55.664982+08
+LOG:  stats_timestamp 2015-04-05 10:57:43.879467+08 is later than collector's time 2015-04-05 10:51:55.66509+08 for db 1
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1002','', 4,current_timestamp,False,672,0, '7113917924261')
+	
+ERROR:  new row for relation "call_cdr2015411" violates check constraint "call_cdr2015411_start_stamp_check"
+DETAIL:  Failing row contains (673, null, null, 1005, 1005, null, 0, 2015-04-15 21:57:49.790306, null, null, 0, 2015-04-15 21:57:49.790306, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, f, f, 7318621575908, f, null, null).
+CONTEXT:  SQL statement "INSERT INTO call_cdr2015411(id, caller_id_name, caller_id_number,  
+			    star_epoch, start_stamp, called_number, a_end_epoch, a_end_stamp)
+			VALUES (673,'1005','1005',  0  , current_timestamp  , '7318621575908',  0 , current_timestamp )"
+	PL/pgSQL function insertnewcall(character varying,character varying,character varying,integer,bigint,bigint) line 27 at EXECUTE statement
+STATEMENT:  select * from insertnewcall('1005','1005','7318621575908',0,0,0)
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,0,0, '7318621575908')
+	
+ERROR:  new row for relation "call_cdr2015411" violates check constraint "call_cdr2015411_start_stamp_check"
+DETAIL:  Failing row contains (674, null, null, 1004, 1004, null, 0, 2015-04-15 22:07:41.908278, null, null, 0, 2015-04-15 22:07:41.908278, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, f, f, 1005, f, null, null).
+CONTEXT:  SQL statement "INSERT INTO call_cdr2015411(id, caller_id_name, caller_id_number,  
+			    star_epoch, start_stamp, called_number, a_end_epoch, a_end_stamp)
+			VALUES (674,'1004','1004',  0  , current_timestamp  , '1005',  0 , current_timestamp )"
+	PL/pgSQL function insertnewcall(character varying,character varying,character varying,integer,bigint,bigint) line 27 at EXECUTE statement
+STATEMENT:  select * from insertnewcall('1004','1004','1005',0,0,0)
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1004','', 6,current_timestamp,False,0,0, '1005')
+	
+LOG:  could not receive data from client: Connection reset by peer
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 3,current_timestamp,False,675,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,675,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 6,current_timestamp,False,675,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 3,current_timestamp,False,676,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 6,current_timestamp,False,676,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,676,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,677,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','', 3,current_timestamp,False,678,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','', 3,current_timestamp,False,681,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','', 3,current_timestamp,False,682,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,683,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+LOG:  could not receive data from client: Connection timed out
+LOG:  could not receive data from client: Connection timed out
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,684,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_event_extension_id_fkey"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 4,current_timestamp,False,684,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,685,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 4,current_timestamp,False,685,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','', 3,current_timestamp,False,686,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,687,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,688,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,689,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 4,current_timestamp,False,689,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 3,current_timestamp,False,691,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','18621575908', 5,current_timestamp,False,691,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  update call_in_out_event set extension_id=0 where cdr_id=691
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','18621575908', 6,current_timestamp,False,691,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','18621575908', 4,current_timestamp,False,691,0, '7318621575908')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,692,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 4,current_timestamp,False,692,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,693,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 4,current_timestamp,False,693,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,694,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,695,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 3,current_timestamp,False,696,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','1005', 4,current_timestamp,False,696,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+FATAL:  unsupported frontend protocol 65363.19778: server supports 1.0 to 3.0
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgresql"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+LOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+FATAL:  unsupported frontend protocol 65363.19778: server supports 1.0 to 3.0
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_group_callout" violates foreign key constraint "call_group_callout_number_group_id_fkey"
+DETAIL:  Key (number_group_id)=(0) is not present in table "call_group".
+STATEMENT:  UPDATE public.call_group_callout SET number_group_id='0'::bigint WHERE id = '37'::bigint
+ERROR:  insert or update on table "call_group_callout" violates foreign key constraint "call_group_callout_number_group_id_fkey"
+DETAIL:  Key (number_group_id)=(0) is not present in table "call_group".
+STATEMENT:  UPDATE public.call_group_callout SET number_group_id='0'::bigint, callout_state_id='1'::bigint WHERE id = '37'::bigint
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18918044441','1005', 3,current_timestamp,False,699,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18918044441','1005', 4,current_timestamp,False,699,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18918044441','', 3,current_timestamp,False,702,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18918044441','', 3,current_timestamp,False,704,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18918044441','', 3,current_timestamp,False,707,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','', 3,current_timestamp,False,709,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18918044441','', 3,current_timestamp,False,712,0, 'sofia/gateway/liangping')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('18621575908','', 3,current_timestamp,False,713,0, 'sofia/gateway/liangping')
+	
+LOG:  could not receive data from client: Connection reset by peer
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+LOG:  could not receive data from client: Connection reset by peer
+LOG:  incomplete startup packet
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  update call_group_callout set callout_state_id=2  where id=49 ;
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  update call_group_callout set run_position=75,success_number=0,failed_number=0,wait_number=1,cancel_number=0  where id=49 
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  Update call_group_callout set callout_state_id=3 where id=49 ;
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  update call_group_callout set callout_state_id=2  where id=49 ;
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  update call_group_callout set run_position=75,success_number=0,failed_number=0,wait_number=1,cancel_number=0  where id=49 
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  Update call_group_callout set callout_state_id=3 where id=49 ;
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  update call_group_callout set callout_state_id=2  where id=49 ;
+	
+ERROR:  could not access status of transaction 0
+DETAIL:  Could not write to file "pg_subtrans/01D0" at offset 163840: No space left on device.
+STATEMENT:  update call_group_callout set run_position=75,success_number=0,failed_number=0,wait_number=1,cancel_number=0  where id=49 
+	
+ERRLOG:  invalid length of startup packet
+LOG:  invalid length of startup packet
+FATAL:  unsupported frontend protocol 65363.19778: server supports 1.0 to 3.0
+LOG:  could not receive data from client: Connection reset by peer
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1006','', 4,current_timestamp,False,714,0, '1005')
+	
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+FATAL:  password authentication failed for user "postgres"
+DETAIL:  Connection matched pg_hba.conf line 87: "host   	all		all		0.0.0.0/0		md5"
+LOG:  incomplete startup packet
+ERROR:  new row for relation "call_cdr2015621" violates check constraint "call_cdr2015621_start_stamp_check"
+DETAIL:  Failing row contains (715, null, null, 1005, 1005, null, 0, 2015-06-22 08:17:56.395165, null, null, 0, 2015-06-22 08:17:56.395165, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, f, f, 913917924261, f, null, null).
+CONTEXT:  SQL statement "INSERT INTO call_cdr2015621(id, caller_id_name, caller_id_number,  
+			    star_epoch, start_stamp, called_number, a_end_epoch, a_end_stamp)
+			VALUES (715,'1005','1005',  0  , current_timestamp  , '913917924261',  0 , current_timestamp )"
+	PL/pgSQL function insertnewcall(character varying,character varying,character varying,integer,bigint,bigint) line 27 at EXECUTE statement
+STATEMENT:  select * from insertnewcall('1005','1005','913917924261',0,0,0)
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,0,0, '913917924261')
+	
+ERROR:  new row for relation "call_cdr2015621" violates check constraint "call_cdr2015621_start_stamp_check"
+DETAIL:  Failing row contains (716, null, null, 1005, 1005, null, 0, 2015-06-22 08:18:01.939536, null, null, 0, 2015-06-22 08:18:01.939536, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, f, f, 7113917924261, f, null, null).
+CONTEXT:  SQL statement "INSERT INTO call_cdr2015621(id, caller_id_name, caller_id_number,  
+			    star_epoch, start_stamp, called_number, a_end_epoch, a_end_stamp)
+			VALUES (716,'1005','1005',  0  , current_timestamp  , '7113917924261',  0 , current_timestamp )"
+	PL/pgSQL function insertnewcall(character varying,character varying,character varying,integer,bigint,bigint) line 27 at EXECUTE statement
+STATEMENT:  select * from insertnewcall('1005','1005','7113917924261',0,0,0)
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,0,0, '7113917924261')
+	
+ERROR:  new row for relation "call_cdr2015621" violates check constraint "call_cdr2015621_start_stamp_check"
+DETAIL:  Failing row contains (717, null, null, 1005, 1005, null, 0, 2015-06-22 08:18:06.957205, null, null, 0, 2015-06-22 08:18:06.957205, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, f, f, 7313917924261, f, null, null).
+CONTEXT:  SQL statement "INSERT INTO call_cdr2015621(id, caller_id_name, caller_id_number,  
+			    star_epoch, start_stamp, called_number, a_end_epoch, a_end_stamp)
+			VALUES (717,'1005','1005',  0  , current_timestamp  , '7313917924261',  0 , current_timestamp )"
+	PL/pgSQL function insertnewcall(character varying,character varying,character varying,integer,bigint,bigint) line 27 at EXECUTE statement
+STATEMENT:  select * from insertnewcall('1005','1005','7313917924261',0,0,0)
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 3,current_timestamp,False,0,0, '7313917924261')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,0,0, '7313917924261')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 6,current_timestamp,False,0,0, '7313917924261')
+	
+ERROR:  new row for relation "call_cdr2015621" violates check constraint "call_cdr2015621_start_stamp_check"
+DETAIL:  Failing row contains (718, null, null, 1005, 1005, null, 0, 2015-06-22 08:18:53.202629, null, null, 0, 2015-06-22 08:18:53.202629, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, f, f, 7318918044441, f, null, null).
+CONTEXT:  SQL statement "INSERT INTO call_cdr2015621(id, caller_id_name, caller_id_number,  
+			    star_epoch, start_stamp, called_number, a_end_epoch, a_end_stamp)
+			VALUES (718,'1005','1005',  0  , current_timestamp  , '7318918044441',  0 , current_timestamp )"
+	PL/pgSQL function insertnewcall(character varying,character varying,character varying,integer,bigint,bigint) line 27 at EXECUTE statement
+STATEMENT:  select * from insertnewcall('1005','1005','7318918044441',0,0,0)
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 3,current_timestamp,False,0,0, '7318918044441')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 4,current_timestamp,False,0,0, '7318918044441')
+	
+ERROR:  insert or update on table "call_in_out_event" violates foreign key constraint "call_in_out_ext_id"
+DETAIL:  Key (extension_id)=(0) is not present in table "call_extension".
+STATEMENT:  INSERT INTO call_in_out_event(aleg_number, bleg_number,  event_id, event_time, is_read,cdr_id ,extension_id, router_number)VALUES ('1005','', 6,current_timestamp,False,0,0, '7318918044441')
+	
