@@ -38,5 +38,13 @@ int stop_log();
 #define LOGDBEX(x,y,z) CNwayLog::GetInstance()->Write("db: %s,%d %s",x,y,z)
 #define LOGEXT(x,y,z,f) CNwayLog::GetInstance()->Write("file: %s,%d %s,number:%s",x,y,z,f)
 #define LOGERREXT(x,y,z,f) CNwayLog::GetInstance()->Write("error: %s,%d %s,number:%s",x,y,z,f)
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+#ifdef DEBUG
+#define print_msg printf
+#else
+#define print_msg
+#endif
+
 #endif
 
