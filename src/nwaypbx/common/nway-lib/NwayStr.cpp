@@ -1,3 +1,15 @@
+/*************************************************************************
+based for NwayPBX
+Copyright (C) 2015-, Li hao <lihao@nway.com.cn>
+License£º GPL
+author: Li hao
+email: lihao@nway.com.cn
+The Initial Developer of the Original Code is
+Li hao<lihao@nway.com.cn>
+Portions created by the Initial Developer are Copyright (C)
+the Initial Developer. All Rights Reserved.
+Contributor(s):
+**************************************************************************/
 #include "NwayStr.h"
 
 std::string trim( const string& str )
@@ -68,4 +80,11 @@ std::string replace( const string& str, const string& src, const string& dest )
 		ret.append(str.begin() + pos_begin, str.end());
 	}
 	return ret;
+}
+
+bool isNumber(const char * src)
+{
+	for (int i = 0; src[i] != 0; i++)
+		if (!isdigit(src[i])) return false;
+	return true;
 }

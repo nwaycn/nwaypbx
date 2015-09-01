@@ -10,23 +10,14 @@ Portions created by the Initial Developer are Copyright (C)
 the Initial Developer. All Rights Reserved.
 Contributor(s):
 **************************************************************************/
-#ifndef __NWAY_STRING_OPT__H
-#define __NWAY_STRING_OPT__H
+// stdafx.h : include file for standard system include files,
+// or project specific include files that are used frequently, but
+// are changed infrequently
+//
+
+#pragma once
 
 
-#include <iostream>
-#include <vector>
-#include <string>
-using namespace std;
-string trim(const string& str);
- 
 
-int split(const string& str, vector<string>& ret_, string sep = ",");
-	 
 
-string replace(const string& str, const string& src, const string& dest);
-
-bool isNumber(const char* src);
- 
-
-#endif
+// TODO: reference additional headers your program requires here

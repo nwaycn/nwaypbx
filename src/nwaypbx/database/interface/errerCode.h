@@ -10,23 +10,17 @@ Portions created by the Initial Developer are Copyright (C)
 the Initial Developer. All Rights Reserved.
 Contributor(s):
 **************************************************************************/
-#ifndef __NWAY_STRING_OPT__H
-#define __NWAY_STRING_OPT__H
+#ifndef DB_ERROR_CODE
+#define DB_ERROR_CODE
+#define SUCCESS 0
+#define DB_SUCCESS 0
+#define DB_CONNECT_FAILED 0x101
+#define DB_CONNECT_CLOSED 0x102
+#define DB_CLOSED  1
+#define DB_EXECUTE_FAILED 0x201
+#define DB_CONDITION_ERROR 0x400
+#define DB_NOT_RUN_QUERY  0x500
+#define DB_NOT_FOUND_RECORD 0x600
 
-
-#include <iostream>
-#include <vector>
-#include <string>
-using namespace std;
-string trim(const string& str);
- 
-
-int split(const string& str, vector<string>& ret_, string sep = ",");
-	 
-
-string replace(const string& str, const string& src, const string& dest);
-
-bool isNumber(const char* src);
- 
 
 #endif

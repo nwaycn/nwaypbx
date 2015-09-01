@@ -71,7 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\libs\libesl\inc;$(IncludePath)</IncludePath>
+    <IncludePath>D:\libs\libesl\inc;D:\libs\pcre-8.37;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\libs\pcre-8.37\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -146,6 +147,18 @@
     <ClCompile Include="..\..\common\log\IVCLog.cpp" />
     <ClCompile Include="..\..\common\log\log.cpp" />
     <ClCompile Include="..\..\common\log\NwayLog.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\base64.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\File.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\Lock.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\Mutex.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\NwayDef.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\NwayStr.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\PcreCpp.cpp" />
+    <ClCompile Include="..\..\common\nway-lib\Semaphore.cpp" />
+    <ClCompile Include="..\..\database\config\config.cpp" />
+    <ClCompile Include="..\..\database\dbimp\CDBOperator.cpp" />
+    <ClCompile Include="..\..\database\interface\db_center.cpp" />
+    <ClCompile Include="..\..\database\interface\sql_interface.cpp" />
     <ClCompile Include="..\..\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +166,29 @@
     <ClInclude Include="..\..\common\log\log.h" />
     <ClInclude Include="..\..\common\log\NwayLog.h" />
     <ClInclude Include="..\..\common\log\stdafx.h" />
+    <ClInclude Include="..\..\common\nway-lib\base64.hpp" />
+    <ClInclude Include="..\..\common\nway-lib\File.h" />
+    <ClInclude Include="..\..\common\nway-lib\IFile.h" />
+    <ClInclude Include="..\..\common\nway-lib\IMutex.h" />
+    <ClInclude Include="..\..\common\nway-lib\Lock.h" />
+    <ClInclude Include="..\..\common\nway-lib\Mutex.h" />
+    <ClInclude Include="..\..\common\nway-lib\NwayDef.h" />
+    <ClInclude Include="..\..\common\nway-lib\NwayStr.h" />
+    <ClInclude Include="..\..\common\nway-lib\PcreCpp.h" />
+    <ClInclude Include="..\..\common\nway-lib\Semaphore.h" />
+    <ClInclude Include="..\..\common\nway-lib\stdafx.h" />
+    <ClInclude Include="..\..\database\config\config.h" />
+    <ClInclude Include="..\..\database\config\stdafx.h" />
+    <ClInclude Include="..\..\database\dbimp\CDBOperator.h" />
+    <ClInclude Include="..\..\database\dbimp\stdafx.h" />
+    <ClInclude Include="..\..\database\interface\dbInclude.h" />
+    <ClInclude Include="..\..\database\interface\db_center.h" />
+    <ClInclude Include="..\..\database\interface\errerCode.h" />
+    <ClInclude Include="..\..\database\interface\sql_interface.h" />
+    <ClInclude Include="..\..\database\interface\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\database\config\info.conf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

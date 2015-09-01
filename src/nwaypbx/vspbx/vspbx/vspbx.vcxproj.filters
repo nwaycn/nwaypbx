@@ -19,6 +19,21 @@
     <Filter Include="common\log">
       <UniqueIdentifier>{e6c2b6b9-f298-4ffb-a8a7-5e1033a80813}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common\nway-lib">
+      <UniqueIdentifier>{fce12b99-c671-4a26-a5a2-41b86fece826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="database">
+      <UniqueIdentifier>{7173ffdc-9066-46cb-a5b4-7818fbf6b15b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="database\interface">
+      <UniqueIdentifier>{61d1b593-b556-4025-b651-fe8532bb2687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="database\db">
+      <UniqueIdentifier>{c4bc4e02-391b-43fa-b6b8-c4831b5ba721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="database\configure">
+      <UniqueIdentifier>{95a00d8b-29e3-41b7-bc47-3664d20ce7ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\main.cpp">
@@ -32,6 +47,42 @@
     </ClCompile>
     <ClCompile Include="..\..\common\log\NwayLog.cpp">
       <Filter>common\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\base64.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\File.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\Lock.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\Mutex.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\NwayDef.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\NwayStr.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\PcreCpp.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\nway-lib\Semaphore.cpp">
+      <Filter>common\nway-lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\database\interface\db_center.cpp">
+      <Filter>database\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\database\interface\sql_interface.cpp">
+      <Filter>database\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\database\dbimp\CDBOperator.cpp">
+      <Filter>database\db</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\database\config\config.cpp">
+      <Filter>database\configure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,5 +98,70 @@
     <ClInclude Include="..\..\common\log\stdafx.h">
       <Filter>common\log</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\base64.hpp">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\File.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\IFile.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\IMutex.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\Lock.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\Mutex.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\NwayDef.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\NwayStr.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\PcreCpp.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\Semaphore.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\nway-lib\stdafx.h">
+      <Filter>common\nway-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\interface\db_center.h">
+      <Filter>database\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\interface\dbInclude.h">
+      <Filter>database\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\interface\errerCode.h">
+      <Filter>database\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\interface\sql_interface.h">
+      <Filter>database\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\interface\stdafx.h">
+      <Filter>database\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\dbimp\CDBOperator.h">
+      <Filter>database\db</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\dbimp\stdafx.h">
+      <Filter>database\db</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\config\config.h">
+      <Filter>database\configure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\database\config\stdafx.h">
+      <Filter>database\configure</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\database\config\info.conf">
+      <Filter>database\configure</Filter>
+    </None>
   </ItemGroup>
 </Project>
