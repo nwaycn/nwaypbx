@@ -19,3 +19,7 @@ you can look this:http://nway.com.cn/t8.html
 2. need you install bakefile
 
 you can look this:http://nway.com.cn/t9.html
+
+3. need you install freeswitch
+
+http://nway.com.cn/t4.html
