@@ -778,7 +778,7 @@ int CExtension::UpdateLoginState( nway_uint64_t& id,int nLogin )
 		char sTmp[200];
 		sprintf(sTmp,"%lld\0",id);
 		strSQL += sTmp;
-		PQexec(dbInstance->GetConn(), strSQL.c_str());
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
 	}
 	catch (...)
 	{
@@ -804,7 +804,7 @@ int CExtension::UpdateRegState( nway_uint64_t& id, const char* szState )
 		char sTmp[200];
 		sprintf(sTmp,"update call_extension set extension_reg_state=\'%s\' where id=%lld;\n", szState, id);
 		 
-		PQexec(dbInstance->GetConn(), sTmp);
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
 	catch (...)
 	{
@@ -838,28 +838,37 @@ int CCallDetailRecord::StartCall( const char* caller_name, const char* caller_nu
 
 	try
 	{
-		string strSQL;
-		strSQL = "insertnewcall";
-		char szCmd[4000] = { 0 };
 		 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-		cmd.Param("v_caller_name").setAsString() = caller_name;
-		cmd.Param("v_caller_number").setAsString() = caller_number;
-		cmd.Param("v_called_number").setAsString() = called_number;
-		cmd.Param("v_is_callout").setAsShort() = 0;
-		cmd.Param("cdrid").setAsNumeric() = id;
-		nway_uint64_t task_id = 0;
-		cmd.Param("v_task_id").setAsNumeric() = task_id;
-		cmd.Execute();
-		id = cmd.Param("cdrid").setAsNumeric();
-		cmd.Close();
+		 
+		char szCmd[4000] = { 0 };
+		sprintf(szCmd, "SELECT * from insertnewcall( \
+			\'%s\', \
+			\'%s\', \
+			\'%s\', \
+			0,  \
+			%lld,\
+			0   \
+			); ", caller_name, caller_number , called_number, 0
+			);
+		res = PQexec(dbInstance->GetConn(), szCmd);
+
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
+		{
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
+			{
+				PQgetUInt64Field(res, i, "cdrid", &id);
+				break;
+			}
+		}
+
+		PQclear(res);
 		
 		sprintf(szCmd,"INSERT INTO call_in_out_event("
 			"aleg_number, bleg_number,  event_id, event_time, "
 			"is_read,cdr_id)"
 			"VALUES (\'%s\',\'%s\', 1,current_timestamp,False,%lld)\n\0",caller_number,called_number,id);
-		PQexec(dbInstance->GetConn(), szCmd);
+		res = PQexec(dbInstance->GetConn(), szCmd);
 
 	}
 	catch (...)
@@ -883,35 +892,39 @@ int CCallDetailRecord::StartCall( const char* caller_name, const char* caller_nu
 
 	try
 	{
-		string strSQL;
-		strSQL = "insertnewcall";
+		short nAC = 0;
+		if (bAutoCallout)  nAC = 1;
+		else nAC = 0;
+		char szCmd[4000] = { 0 };
+		sprintf(szCmd, "SELECT * from insertnewcall( \
+			\'%s\', \
+			\'%s\', \
+			\'%s\', \
+			%d,  \
+			%lld,\
+			0   \
+			); ", caller_name, caller_number, called_number, nAC, task_id
+			);
+		res = PQexec(dbInstance->GetConn(), szCmd);
 
-
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-		cmd.Param("v_caller_name").setAsString() = caller_name;
-		cmd.Param("v_caller_number").setAsString() = caller_number;
-		cmd.Param("v_called_number").setAsString() = called_number;
-		if (bAutoCallout)
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
 		{
-			cmd.Param("v_is_callout").setAsShort() = 1;
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
+			{
+				PQgetUInt64Field(res, i, "cdrid", &id);
+				break;
+			}
 		}
-		else
-			cmd.Param("v_is_callout").setAsShort() = 0;
-		cmd.Param("cdrid").setAsNumeric() = id;
-		cmd.Param("v_task_id").setAsNumeric() = task_id;
-		cmd.Execute();
-		id = cmd.Param("cdrid").setAsNumeric();
-		cmd.Close();
+
+		PQclear(res);
+		
 		char szCmd[4000]={0};
 		sprintf(szCmd,"INSERT INTO call_in_out_event("
 			"aleg_number, bleg_number,  event_id, event_time, "
 			"is_read,cdr_id)"
 			"VALUES (\'%s\',\'%s\', 1,current_timestamp,False,%lld)\n\0",caller_number,called_number,id);
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(szCmd);
-		cmd.Execute();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), szCmd);
 	}
 	catch (...)
 	{
@@ -941,15 +954,16 @@ int CCallDetailRecord::A_AnswerCall( nway_uint64_t& id )
 
 		strSQL += sTmp;
 		printf(strSQL.c_str());
-		PQexec(dbInstance->GetConn(), strSQL.c_str());
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
 		
 	}
 	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("update call error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "update call error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
 	PQclear(res);
 	dbInstance->Unlock();
@@ -973,21 +987,17 @@ int CCallDetailRecord::B_AnswerCall( nway_uint64_t& id, const char* dest_number,
 		sprintf(sTmp,"%lld \n",id);
 		
 		strSQL += sTmp;
-		printf(strSQL.c_str());
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-
-		cmd.Execute();
-		 
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("update call error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "update call error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -997,6 +1007,7 @@ int CCallDetailRecord::A_EndCall( nway_uint64_t& id, NWAY_HANGUP_CAUSE cause,int
 	db_center* dbInstance = db_center::get_instance();
 	PGresult* res = NULL;
 	int nSuccess=0;
+	PGresult* res = NULL;
 	dbInstance->Lock();
 
 	try
@@ -1051,20 +1062,17 @@ int CCallDetailRecord::A_EndCall( nway_uint64_t& id, NWAY_HANGUP_CAUSE cause,int
 		
 		strSQL += sTmp;
 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("update A_EndCall error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "update A_EndCall error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1087,20 +1095,17 @@ int CCallDetailRecord::B_EndCall( nway_uint64_t& id, const char* dest_number, NW
 		sprintf(sTmp," where id=%lld \n\0",id);
 		strSQL += sTmp;
 		printf(strSQL.c_str());
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("update B_EndCall error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "update B_EndCall error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1123,20 +1128,17 @@ int CCallDetailRecord::SetRecordFile( nway_uint64_t& id,const char* filename )
 		sprintf(sTmp," where id=%lld\0",id);
 		strSQL += sTmp;
 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("set record file error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "set record file error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1150,24 +1152,19 @@ int CCallDetailRecord::CountTime( nway_uint64_t& id )
 
 	try
 	{
-		string strSQL;
-		strSQL = "count_time";
-		
-
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-		cmd.Param("cdrid").setAsNumeric() = id;
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		char szCmd[1000] = { 0 };
+		sprintf(szCmd, "SELECT count_time(%lld); " , id);
+		PQexec(dbInstance->GetConn(), szCmd);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("count time error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "count time error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1184,20 +1181,17 @@ int CCallDetailRecord::SetDtmf( nway_uint64_t& id, const char* dtmf )
 
 		char szCmd[4000]={0};
 		sprintf(szCmd,"update call_cdr set input_key=\'%s\' where cdr_id=%lld;\n",dtmf, id);
-		cmd.setConnection(dbInstance->GetConn());
-		printf("%s, %d sql:%s\n",__FILE__,__LINE__,szCmd);
-		cmd.setCommandText(szCmd);
-		cmd.Execute();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), szCmd);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "SetDtmf error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+ 
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1256,27 +1250,23 @@ int InsertCallEvent( nway_uint64_t& cdr_id, nway_uint64_t& ext_id,string& a_leg_
 			
 		}
 		
-		cmd.setConnection(dbInstance->GetConn());
-		//printf("%s, %d sql:%s\n",__FILE__,__LINE__,szCmd);
-		cmd.setCommandText(szCmd);
-		cmd.Execute();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), szCmd);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "insert call_in_out_event error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
 
 int UpdateCallEvent( nway_uint64_t& cdr_id, nway_uint64_t& ext_id )
 {
-		db_center* dbInstance = db_center::get_instance();
+	db_center* dbInstance = db_center::get_instance();
 	PGresult* res = NULL;
 	int nSuccess=0;
 	dbInstance->Lock();
@@ -1286,19 +1276,15 @@ int UpdateCallEvent( nway_uint64_t& cdr_id, nway_uint64_t& ext_id )
 		
 		char szCmd[4000]={0};
 		sprintf(szCmd,"update call_in_out_event set extension_id=%lld where cdr_id=%lld\n\0",ext_id,cdr_id);
-		cmd.setConnection(dbInstance->GetConn());
-		printf("%s, %d sql:%s\n",__FILE__,__LINE__,szCmd);
-		cmd.setCommandText(szCmd);
-		cmd.Execute();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), szCmd);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "UpdateCallEvent error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
+		 
 	}
 	dbInstance->Unlock();
 	return nSuccess;
@@ -1313,31 +1299,36 @@ int DBGetClickDials( vector<Click_Dial>& vecClickDials )
 
 	try
 	{
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText("SELECT id, caller_number, is_agent, is_immediately, trans_number, time_plan, \
+		res = PQexec(dbInstance->GetConn(),"SELECT id, caller_number, is_agent, is_immediately, trans_number, time_plan, \
 			account_number, is_called\
 			FROM call_click_dial where is_called=False and is_immediately=True;");
 
-		cmd.Execute();
-		while(cmd.FetchNext())
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
 		{
-			Click_Dial cd;
-			cd.id = cmd.Field("id").asNumeric();
-			cd.account_number = cmd.Field("account_number").asString();
-			cd.caller_number = cmd.Field("caller_number").asString();
-			cd.trans_number = cmd.Field("trans_number").asString();
-			vecClickDials.push_back(cd);
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
+			{
+
+				Click_Dial cd;
+				//cd.id = cmd.Field("id").asNumeric();
+				PQgetUInt64Field(res, i, "id", &cd.id);
+				cd.account_number = PQgetStringField(res,i,"account_number");
+				cd.caller_number = PQgetStringField(res,i,"caller_number" );
+				cd.trans_number = PQgetStringField(res,i,"trans_number") ;
+				vecClickDials.push_back(cd);
+			}
 			
 		}
-		cmd.Close();
+		 
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("load extensions error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "DBGetClickDials error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1354,20 +1345,18 @@ int DBSetClickDialed( nway_uint64_t& id )
 
 		char szCmd[4000]={0};
 		sprintf(szCmd,"update call_click_dial set is_called=True where id=%lld\n\0",id);
-		cmd.setConnection(dbInstance->GetConn());
+		res = PQexec(dbInstance->GetConn(), szCmd);
 		printf("%s, %d sql:%s\n",__FILE__,__LINE__,szCmd);
-		cmd.setCommandText(szCmd);
-		cmd.Execute();
-		cmd.Close();
+		 
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "DBSetClickDialed error:%s\n", PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1381,28 +1370,32 @@ int DBGetConfigChanged( vector<int>& vecConfigs )
 
 	try
 	{
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText("SELECT config_order "
+		res = PQexec(dbInstance->GetConn(),"SELECT config_order "
 						   "FROM call_load_config where is_load=True;");
 
-		cmd.Execute();
-		while(cmd.FetchNext())
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
 		{
-			int config_id;
-			config_id = cmd.Field("config_order").asShort();
-			
-			vecConfigs.push_back(config_id);
-			nSuccess =1;
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
+			{
+
+				int config_id;
+				 
+				PQgetIntField(res, i, "config_order", &config_id);
+				vecConfigs.push_back(config_id);
+				nSuccess = 1;
+			}
 		}
-		cmd.Close();
+		 
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("load extensions error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n",__FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1418,20 +1411,16 @@ int DBSetConfigChanged( int orderid )
 	{
 		char szCmd[1024]={0};
 		sprintf(szCmd,"update call_load_config set is_load=False where config_order=%d;\n", orderid);
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(szCmd);
-
-		cmd.Execute();
-		
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), szCmd);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("load extensions error:%s\n",s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1469,110 +1458,118 @@ int CDBCalloutTask::GetTasks( list<Callout_Task>& lstCalloutTasks , list<NwayGat
 			and (callout_state_id=1 or callout_state_id=2 or callout_state_id=4) and has_parse_from_file=True ;";
 
 		//printf("%s,%d    string:%s \n\n", __FILE__, __LINE__, strSQL.c_str());
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(strSQL.c_str());
-		 
-		cmd.Execute();
-		while(cmd.FetchNext())
+		res = PQexec(dbInstance->GetConn(), strSQL.c_str());
+
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
 		{
-			//找到相关的定时任务
-			//每条记录应先从列表中检索一遍看存在与否
-			Callout_Task ct ;
-			ct.id = cmd.Field("id").asNumeric();
-			ct.callout_name = cmd.Field("callout_name").asString();
-			ct.after_key_opt_id = cmd.Field("after_key_opt_id").asShort();
-			ct.after_ring_key = cmd.Field("after_ring_key").asString();
-			ct.after_ring_play = cmd.Field("after_ring_play").asShort();
-			ct.call_project_id = cmd.Field("call_project_id").asNumeric();
-			ct.callout_gateway_id = cmd.Field("callout_gateway_id").asNumeric();
-			ct.callout_state_id = cmd.Field("callout_state_id").asNumeric();
-			ct.cancel_number = cmd.Field("cancel_number").asShort();
-			ct.concurr_number = cmd.Field("concurr_number").asShort();
-			ct.concurr_type_id = cmd.Field("concurr_type_id").asNumeric();
-			ct.failed_number = cmd.Field("failed_number").asShort();
-			ct.group_id = cmd.Field("group_id").asNumeric();
-			ct.max_concurr_number = cmd.Field("max_concurr_number").asShort();
-			ct.number_group_id = cmd.Field("number_group_id").asNumeric();
-			ct.ring_id = cmd.Field("ring_id").asNumeric();
-			ct.ring_timeout = cmd.Field("ring_timeout").asShort();
-			ct.run_position = cmd.Field("run_position").asNumeric(); // 实时更新
-			ct.second_after_ring_opt = cmd.Field("second_after_ring_opt").asShort();
-			ct.second_ring_id = cmd.Field("second_ring_id").asNumeric();
-			ct.success_number = cmd.Field("success_number").asShort();
-			ct.time_rule_id = cmd.Field("time_rule_id").asNumeric();
-			ct.total_number = cmd.Field("total_number").asShort();
-			ct.wait_number = cmd.Field("wait_number").asShort();
-			ct.outside_line_number = cmd.Field("outside_line_number").asString();
-			printf("%s,%d  get a call out task:%s\n\n",__FILE__,__LINE__,ct.callout_name.c_str());
-			//先查找网关，如果没有网关，则不需要对此外呼任务进行处理
-			list<NwayCalloutGateway>::iterator coGwit = lstCalloutGateways.begin();
-			for(; coGwit != lstCalloutGateways.end(); coGwit++)
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
 			{
-				NwayCalloutGateway& nwCalloutGw = *coGwit;
-				if (nwCalloutGw.id == ct.callout_gateway_id)
+				//找到相关的定时任务
+				//每条记录应先从列表中检索一遍看存在与否
+				Callout_Task ct;
+				 
+				PQgetUInt64Field(res, i, "id", &ct.id);
+				ct.callout_name = PQgetStringField(res,i,"callout_name");
+				 
+				PQgetIntField(res, i, "after_key_opt_id", &ct.after_key_opt_id);
+				ct.after_ring_key = PQgetStringField(res, i, "after_ring_key") ;
+				PQgetIntField(res, i, "after_ring_play", &ct.after_ring_play);
+				PQgetUInt64Field(res, i, "call_project_id", &ct.call_project_id);
+				PQgetUInt64Field(res, i, "callout_gateway_id", &ct.callout_gateway_id);
+				
+				PQgetUInt64Field(res, i, "callout_state_id", &ct.callout_state_id);
+				PQgetIntField(res, i, "cancel_number", &ct.cancel_number);
+				
+				PQgetIntField(res, i, "concurr_number", &ct.concurr_number);
+				PQgetUInt64Field(res, i, "concurr_type_id", &ct.concurr_type_id);
+				PQgetIntField(res, i, "failed_number", &ct.failed_number);
+				PQgetUInt64Field(res, i, "group_id", &ct.group_id);
+
+				PQgetIntField(res, i, "max_concurr_number", &ct.max_concurr_number);
+				PQgetUInt64Field(res, i, "number_group_id", &ct.number_group_id);
+				PQgetUInt64Field(res, i, "ring_id", &ct.ring_id);
+				PQgetIntField(res, i, "ring_timeout", &ct.ring_timeout);
+				PQgetUInt64Field(res, i, "run_position", &ct.run_position);
+				PQgetIntField(res, i, "second_after_ring_opt", &ct.second_after_ring_opt);
+				PQgetUInt64Field(res, i, "second_ring_id", &ct.second_ring_id);
+				PQgetIntField(res, i, "success_number", &ct.success_number);
+				PQgetUInt64Field(res, i, "time_rule_id", &ct.time_rule_id);
+				PQgetIntField(res, i, "total_number", &ct.total_number);
+				PQgetIntField(res, i, "wait_number", &ct.wait_number);
+				 
+				ct.outside_line_number = PQgetStringField(res, i, "outside_line_number") ;
+				 
+				list<NwayCalloutGateway>::iterator coGwit = lstCalloutGateways.begin();
+				for (; coGwit != lstCalloutGateways.end(); coGwit++)
 				{
-					list<NwayGateway>::iterator gwit = lstGateways.begin();
-					for (; gwit != lstGateways.end(); gwit++)
+					NwayCalloutGateway& nwCalloutGw = *coGwit;
+					if (nwCalloutGw.id == ct.callout_gateway_id)
 					{
-						NwayGateway& nwaygw = *gwit;
-						if (nwaygw.id == nwCalloutGw.gateway_id)
+						list<NwayGateway>::iterator gwit = lstGateways.begin();
+						for (; gwit != lstGateways.end(); gwit++)
 						{
-							ct.gateway_max_line = nwaygw.max_call;
-							ct.gateway_url = nwaygw.gateway_url;
-							ct.call_prefix = nwaygw.call_prefix;
-							break;
+							NwayGateway& nwaygw = *gwit;
+							if (nwaygw.id == nwCalloutGw.gateway_id)
+							{
+								ct.gateway_max_line = nwaygw.max_call;
+								ct.gateway_url = nwaygw.gateway_url;
+								ct.call_prefix = nwaygw.call_prefix;
+								break;
+							}
 						}
+						break;
 					}
-					break;
-				}
 
-			}
-			//////////////////////////////////////////////////////////////////////////
-			
-			//处理暂停事宜
-			list<Callout_Task>::iterator it = lstCalloutTasks.begin();
-			bool bFound = false;
-			for (; it != lstCalloutTasks.end(); it ++)
-			{
-				Callout_Task& nwayCt = *it;
-				printf("%s,%d compare the list task:%s and this task:%s \n\n", __FILE__,__LINE__,nwayCt.callout_name.c_str() ,ct.callout_name.c_str());
-				if (nwayCt.id == ct.id)
+				}
+				//////////////////////////////////////////////////////////////////////////
+
+				//处理暂停事宜
+				list<Callout_Task>::iterator it = lstCalloutTasks.begin();
+				bool bFound = false;
+				for (; it != lstCalloutTasks.end(); it++)
 				{
-					if (ct.callout_state_id == 4 || trim(ct.gateway_url).length() <3)
+					Callout_Task& nwayCt = *it;
+					printf("%s,%d compare the list task:%s and this task:%s \n\n", __FILE__, __LINE__, nwayCt.callout_name.c_str(), ct.callout_name.c_str());
+					if (nwayCt.id == ct.id)
 					{
-						//处理暂停
-						nwayCt.callout_state_id = 4;
+						if (ct.callout_state_id == 4 || trim(ct.gateway_url).length() < 3)
+						{
+							//处理暂停
+							nwayCt.callout_state_id = 4;
+							//*it = nwayCt;
+						}
 						//*it = nwayCt;
+						bFound = true;
+						break;
 					}
-					//*it = nwayCt;
-					bFound = true;
-					break;
 				}
-			}
-			//if ()
-			//{
-			//	printf("%s,%d the call out gateway:%s\n\n" , __FILE__, __LINE__, ct.gateway_url.c_str());
-			//	//暂停，否则会让检测线程不停处理这个任务
-			//	nwayCt.callout_state_id = 4; 
-			//	continue;
-			//}
-			if (!bFound)
-			{
-				printf("%s, %d  add a call out task id: %lld ;\n",__FILE__,__LINE__, ct.id);
-				lstCalloutTasks.push_back(ct);
-			}
+				//if ()
+				//{
+				//	printf("%s,%d the call out gateway:%s\n\n" , __FILE__, __LINE__, ct.gateway_url.c_str());
+				//	//暂停，否则会让检测线程不停处理这个任务
+				//	nwayCt.callout_state_id = 4; 
+				//	continue;
+				//}
+				if (!bFound)
+				{
+					printf("%s, %d  add a call out task id: %lld ;\n", __FILE__, __LINE__, ct.id);
+					lstCalloutTasks.push_back(ct);
+				}
 
+			}
 		}
 		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		 
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		printf("%s, %d\t GetTasks error:%s\n", __FILE__,__LINE__,s.c_str()); 
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1589,23 +1586,14 @@ int CDBCalloutTask::UpdateTaskStatus( nway_uint64_t& id, nway_uint64_t& run_post
 		char sTmp[2000] = {0};
 		 
 		sprintf(sTmp,"update call_group_callout set run_position=%lld,success_number=%d,failed_number=%d,wait_number=%d,cancel_number=%d  where id=%lld \n",run_postion,success,failed,total-success-failed, cancled,id);
-		//where id=";
-		 
-		 
-
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
 	dbInstance->Unlock();
 	return nSuccess;
@@ -1623,24 +1611,16 @@ int CDBCalloutTask::UpdateTaskState( nway_uint64_t&id, int nState )
 		char sTmp[2000] = {0};
 
 		sprintf(sTmp,"update call_group_callout set callout_state_id=%d  where id=%lld ;\n",nState , id);
-		//where id=";
-
-
-
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1661,25 +1641,27 @@ int CDBCalloutTask::GetIdleAgentNumber( nway_uint64_t& groupid,int& nNumber )
 			FROM call_extension t where (t.extension_login_state='success' or t.extension_login_state='') and t.group_id =%lld;\n",groupid) ;
 
 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(szTmp);
+		res = PQexec(dbInstance->GetConn(), szTmp);
 
-		cmd.Execute();
-		while(cmd.FetchNext())
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
 		{
-			nNumber = cmd.Field("idlecount").asLong();
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
+			{
+				PQgetIntField(res, i, "idlecount",& nNumber);
+			}
+			 
 		}
-		//id = cmd.Param('cdrid').setAsNumeric();
-		//printf("%s, %d\t Has %d Idle Agent\n",__FILE__, __LINE__, nNumber);
-		cmd.Close();
+		 
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1699,66 +1681,62 @@ int CDBCalloutTask::GetCalloutNumbers( Callout_Task& nwayct, int nMaxnumber )
 		sprintf(szTmp, "SELECT id, group_id, \"number\", is_called, call_state, start_time, answer_time, \
 			hangup_time, hangup_reason_id, answer_extension_id, record_file, wait_sec \
 			FROM call_out_numbers where group_id=%lld and call_out_task_id=%lld and is_called=0  and id >%lld order by id limit %d offset 0;\n", nwayct.number_group_id,  nwayct.id, nwayct.run_position, nMaxnumber) ;
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(szTmp);
-		//printf(szTmp);
-		cmd.Execute();
+		res = PQexec(dbInstance->GetConn(), szTmp);
 		int nCount = 0;
-		while(cmd.FetchNext())
+		if (PQresultStatus(res) == PGRES_TUPLES_OK)
 		{
-			 Callout_info ci;
-			 ci.id = cmd.Field("id").asNumeric();
-			 ci.group_id = nwayct.id;
-			 ci.number = cmd.Field("number").asString();
-			 ci.wait_sec = cmd.Field("wait_sec").asShort();
-			 ci.callout_state = CALLOUT_INIT;
-			 i64Maxid = ci.id;
-			 string strNumber;
-			 strNumber = trim(ci.number);
-			 if (strNumber.length() < 2 || strNumber == "110" || strNumber == "119" || strNumber == "96110"  )
-			 {
-				 //以后可进一步扩展为可配置
-				 continue;
-			 }
-			 sprintf(szTmp,"%s,%d    get a call out number:%s\n\n",__FILE__,__LINE__,ci.number.c_str());
-			 LOG(szTmp);
-			 nwayct.lstCalloutInfo.push_back(ci);
-			 nCount ++;
+			int nTuples = PQntuples(res);
+			for (int i = 0; i < nTuples; i++)
+			{
+
+				Callout_info ci;
+				PQgetUInt64Field(res, i, "id", &ci.id);
+				 
+				ci.group_id = nwayct.id;
+				ci.number = PQgetStringField(res,i,"number") ;
+				 
+				PQgetIntField(res, i, "wait_sec",& ci.wait_sec);
+				ci.callout_state = CALLOUT_INIT;
+				i64Maxid = ci.id;
+				string strNumber;
+				strNumber = trim(ci.number);
+				if (strNumber.length() < 2 || strNumber == "110" || strNumber == "119" || strNumber == "96110")
+				{
+					//以后可进一步扩展为可配置
+					continue;
+				}
+				sprintf(szTmp, "%s,%d    get a call out number:%s\n\n", __FILE__, __LINE__, ci.number.c_str());
+				LOG(szTmp);
+				nwayct.lstCalloutInfo.push_back(ci);
+				nCount++;
+			}
 
 		}
 
 		nwayct.run_position = i64Maxid;//更新position,由于order by故而是最大的，除非数据库中随意手工更改过
 		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		 
 		if (nCount == 0)
 		{
 			//号码获取不到了，则是可以认为完成这个任务了
 			sprintf(szTmp,"Update call_group_callout set callout_state_id=3 where id=%lld ;\n",nwayct.id);
-			cmd.setConnection(dbInstance->GetConn());
-			cmd.setCommandText(szTmp);
-
-			cmd.Execute();
-			cmd.Close();
-
 		}
 		else
 		{
 			sprintf(szTmp,"Update call_group_callout set callout_state_id=2 where id=%lld ;\n",nwayct.id);
-			cmd.setConnection(dbInstance->GetConn());
-			cmd.setCommandText(szTmp);
-			cmd.Close();
-
-			cmd.Execute();
 		}
+		PQclear(res);
+		res = PQexec(dbInstance->GetConn(), szTmp);
 
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1775,24 +1753,16 @@ int CDBCalloutInfo::StartCallout( nway_uint64_t& id,nway_uint64_t& cdrid )
 		char sTmp[2000] = {0};
 
 		sprintf(sTmp,"update call_out_numbers set is_called=1,start_time=current_timestamp,cdr_id=%lld  where id=%lld \n\0", id, cdrid);
-		//where id=";
-
-
-
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1820,20 +1790,16 @@ int CDBCalloutInfo::ExtensionAnswer( nway_uint64_t& id,nway_uint64_t& extension_
 
 		sprintf(sTmp,"update call_out_numbers set answer_extension_id=%lld,record_file=\'%s\' where id=%lld \n",extension_id,record_file,id );
 		
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1851,19 +1817,14 @@ int CDBCalloutInfo::SetAlegAnswer( nway_uint64_t& id )
 
 		sprintf(sTmp,"update call_out_numbers set answer_time=current_timestamp   where id=%lld \n",id);
 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
 	dbInstance->Unlock();
 	return nSuccess;
@@ -1882,20 +1843,16 @@ int CDBCalloutInfo::SetAlegHangup( nway_uint64_t& id, int nHangupid )
 
 		sprintf(sTmp,"update call_out_numbers set hangup_time=current_timestamp, hangup_reason_id=%d   where id=%lld \n",nHangupid,id);
 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
@@ -1913,20 +1870,16 @@ int CDBCalloutInfo::SetCalled( nway_uint64_t& id )
 
 		sprintf(sTmp,"update call_out_numbers set is_called=1 where id=%lld \n", id);
 
-		cmd.setConnection(dbInstance->GetConn());
-		cmd.setCommandText(sTmp);
-
-		cmd.Execute();
-		//id = cmd.Param('cdrid').setAsNumeric();
-		cmd.Close();
+		res = PQexec(dbInstance->GetConn(), sTmp);
 	}
-	catch (SAException &x)
+	catch (...)
 	{
-		string s;
-		s = x.ErrText().GetBuffer(x.ErrText().GetLength());
-		LOGERREX(__FILE__,__LINE__,s.c_str());
-		nSuccess = -1;//执行有错误
+		char errmsg[1024] = { 0 };
+		sprintf(errmsg, "%s error:%s\n", __FUNCTION__, PQresultErrorMessage(res));
+		LOGDBERR(__FILE__, __LINE__, errmsg);
+		nSuccess = -1;
 	}
+	PQclear(res);
 	dbInstance->Unlock();
 	return nSuccess;
 }
