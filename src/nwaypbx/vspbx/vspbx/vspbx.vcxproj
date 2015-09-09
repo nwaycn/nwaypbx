@@ -160,6 +160,8 @@
     <ClCompile Include="..\..\database\interface\db_center.cpp" />
     <ClCompile Include="..\..\database\interface\sql_interface.cpp" />
     <ClCompile Include="..\..\main.cpp" />
+    <ClCompile Include="..\..\nwaypbx\fs_ext.cpp" />
+    <ClCompile Include="..\..\nwaypbx\structdef.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\log\IVCLog.h" />
@@ -186,6 +188,9 @@
     <ClInclude Include="..\..\database\interface\errerCode.h" />
     <ClInclude Include="..\..\database\interface\sql_interface.h" />
     <ClInclude Include="..\..\database\interface\stdafx.h" />
+    <ClInclude Include="..\..\nwaypbx\fs_ext.h" />
+    <ClInclude Include="..\..\nwaypbx\statedef.h" />
+    <ClInclude Include="..\..\nwaypbx\structdef.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\database\config\info.conf" />
