@@ -202,3 +202,113 @@ bool nway_isdigit(const char * str)
 	}
 	return bResult;
 }
+
+bool nway_bridge(esl_handle_t* pHandle, const char * a_uuid, const char * b_uuid)
+{
+	char szCmd[2048] = { 0 };
+	sprintf(szCmd, "bgapi uuid_bridge %s %s\n\n", a_uuid, b_uuid);
+	esl_send_recv(pHandle, szCmd);// 
+								  //	uuid[0]=0;
+	if (pHandle->last_sr_event && pHandle->last_sr_event->body)
+	{
+		printf("[%s]\n", pHandle->last_sr_event->body);
+		//	strcpy(uuid,(handle.last_sr_event->body)+strlen("+OK Job-UUID: "));
+		return true;
+	}
+	else
+	{
+		printf("[%s] last_sr_reply\n", pHandle->last_sr_reply);
+		return false;
+	}
+}
+
+bool nway_playring(esl_handle_t * pHandle, const char * uuid, const char * ring_file)
+{
+	esl_execute(pHandle, "playback", ring_file, uuid);
+}
+
+void get_nway_dialstring(const char * srcstr, char * desstr, vector<MatchResult>& matchs)
+{
+	char beginstr[200] = { 0 };
+	char endstr[200] = { 0 };
+	char convertstr[30] = { 0 };
+	const char* dpos = strchr(srcstr, '$');//
+	const char* apos = strchr(srcstr, '@');//
+	bool bDollar = false;
+	bool bAt = false;
+	int nBegin = 0;
+	int nEnd = 0;
+	int nConvert = 0;
+	if (dpos && apos)
+	{
+
+		int len1 = dpos - srcstr;
+		strncpy(beginstr, srcstr, len1);
+		apos = strchr(dpos, '@'); //so: @{domain_name}
+		if (apos)
+		{
+			strncpy(convertstr, dpos + 1, apos - dpos - 1);
+		}
+		else
+		{
+			 
+			strncpy(convertstr, dpos + 1, 1);
+		}
+		if (nway_isdigit(convertstr))
+		{
+			 
+			nConvert = atoi(convertstr);
+			 
+			if (matchs.size()>0)
+			{
+				sprintf(desstr, "%s%s%s\0", beginstr, matchs[0].value[nConvert].c_str(), apos);
+			}
+			else
+				strncpy(desstr, srcstr, strlen(srcstr));
+		}
+
+		else
+		{
+			strncpy(desstr, srcstr, strlen(srcstr));
+
+		}
+
+
+
+	}
+	else
+	{
+		if (dpos)
+		{
+			int len1 = dpos - srcstr;
+			strncpy(beginstr, srcstr, len1);
+			//strcpy(convertstr,dpos+1);
+			strncpy(convertstr, dpos + 1, 1);
+			if (nway_isdigit(convertstr))
+			{
+
+				nConvert = atoi(convertstr);
+				 
+				if (matchs.size()>0)
+				{
+					sprintf(desstr, "%s%s\0", beginstr, matchs[0].value[nConvert].c_str());
+					 
+				}
+				else
+					strncpy(desstr, srcstr, strlen(srcstr));
+			}
+
+			else
+			{
+				strncpy(desstr, srcstr, strlen(srcstr));
+
+			}
+		}
+		else
+			strncpy(desstr, srcstr, strlen(srcstr));
+	}
+
+	//printf(desstr);
+
+}
+}

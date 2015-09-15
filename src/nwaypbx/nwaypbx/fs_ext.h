@@ -14,6 +14,10 @@ Contributor(s):
 #ifndef __NWAY_PBX_FREESWITCH_EXT__
 #define __NWAY_PBX_FREESWITCH_EXT__
 #include <esl.h>
+#include <vector>
+#include "../common/nway-lib/PcreCpp.h"
+
+using namespace std;
 //在这里有一部分代码是移自于厦门-余洪涌某一个公开的源代码文件中
 
 int check_event_body(const char*eventbody, char*dtmfbuf, int maxdtmf, char* endchar, int *channel_execute);
@@ -80,6 +84,12 @@ bool get_uuid(esl_handle_t* pHandle, char* uuid);
 bool nway_hangup(esl_handle_t* pHandle, const char* uuid);
 
 bool nway_isdigit(const char* str);
+
+bool nway_bridge(esl_handle_t* pHandle, const char* a_uuid, const char* b_uuid);
+
+bool nway_playring(esl_handle_t* pHandle, const char* uuid, const char* ring_file);
+
+void get_nway_dialstring(const char* srcstr, char* desstr, vector<MatchResult>& matchs);
 #endif
 
 
