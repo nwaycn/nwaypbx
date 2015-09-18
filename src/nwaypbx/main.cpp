@@ -19,21 +19,19 @@ Contributor(s):
 #include <sys/io.h>
 #endif
 #include <stdlib.h>
-#include "esl/esl.h"
-#include "nwaycti/nwaycti.h"
-#include "nwaycti/DirectCall.h"
-#include "nwaycti/NwayIVR.h"
-#include "nwaycti/structdef.h"
-#include "Check_Content.h"
-#include "log/log.h"
-#include "common/PcreCpp.h"
+#include <esl.h>
+
+#include "nwaypbx/structdef.h"
+ 
+#include "common/log/log.h"
+#include "common/nway-lib/PcreCpp.h"
 //char guuid[128];
 #define disp_msg  //printf
 #include <pthread.h>
 #include <string>
 #include <vector>
-#include "common/NwayStr.h"
-#include "process_event.h"
+#include "common/nway-lib/NwayStr.h"
+ 
 using namespace std;
 list<base_config> lstBaseConfig;
 list<NwayExtensionGroup> lstExtensionGroup;
@@ -113,91 +111,7 @@ int main(void)
 {
 	bool bSuccess=false;
 	start_log();
-	bSuccess = InitDatabase();
-	pthread_mutex_init(&taskMutex, NULL); 
-	pthread_mutex_init(&infoMutex, NULL); 
-	pthread_mutex_init(&calloutMutex,NULL);
-	pthread_mutex_init(&configMutex, NULL);
-	pthread_mutex_init(&clickDialMutex, NULL);
-	if (bSuccess)
-	{
-		//只有数据库初始化成功才有意义，否则没必要执行
-		bSuccess = LoadConfigFromDb(  lstBaseConfig,   lstExtensionGroup,  lstExtension, \
-			lstGateway,   lstDialplanDetail,   lstDialplan, \
-			lstIvrDeatail,   lstIvr,   lstRings, lstOutsides, lstInOutMapping, lstCalloutGateways);
-
-
-		if (bSuccess)
-		{
-			int nStatus = GetBasePath(BasePath,lstBaseConfig);
-			nOutsideLen = GetOutlineLen(lstBaseConfig ,configMutex);//给的号码的长度
-			//初始化正则验证模块Pcre
-			list<NwayDialplan>::iterator it = lstDialplan.begin();
-			for (; it!= lstDialplan.end(); it++)
-			{
-				NwayDialplan ndobj = *it;
-				printf("%s,  %d the pcre number%s\n",__FILE__, __LINE__,ndobj.dialplan_number.c_str());
-				regexPcre.AddRule(ndobj.id,ndobj.dialplan_number);
-			}
-			//////////////////////////////////////////////////////////////////////////
-			//init inbound module
-			int ret = 0;
-			pthread_t pthid1, pthid2,pthid3,pthid4,pthid5;
-			ret= pthread_create(&pthid1,NULL, Inbound_Init, NULL);
-			if(ret)       // 非0则创建失败
-			{
-				perror("createthread 1 failed.\n");
-				return 1;
-			}
-			//////////////////////////////////////////////////////////////////////////
-			ret= pthread_create(&pthid2,NULL, Task_Process, NULL);
-			if(ret)       // 非0则创建失败
-			{
-				perror("createthread 2 failed.\n");
-				return 1;
-			}
-			ret= pthread_create(&pthid3,NULL, CallOut_Task_Process, NULL);
-			if(ret)       // 非0则创建失败
-			{
-				perror("createthread 3 failed.\n");
-				return 1;
-			}
-			ret= pthread_create(&pthid4,NULL, Config_Process, NULL);
-			if(ret)       // 非0则创建失败
-			{
-				perror("createthread 4 failed.\n");
-				return 1;
-			}
-			ret= pthread_create(&pthid5,NULL, ClickDial_Process, NULL);
-			if(ret)       // 非0则创建失败
-			{
-				perror("createthread 5 failed.\n");
-				return 1;
-			}
-			//////////////////////////////////////////////////////////////////////////
-			LOGEX(__FILE__,__LINE__,"load regex rule module successed");
-			esl_global_set_default_logger(ESL_LOG_LEVEL_INFO);
-			esl_listen_threaded("localhost", 8040, nwaycc_callback,100000);
-			//////////////////////////////////////////////////////////////////
-			//Inbound 启动
-			pthread_join(pthid1,NULL);    
-			pthread_join(pthid2,NULL);
-			pthread_join(pthid3,NULL);
-			pthread_join(pthid4,NULL);
-			pthread_join(pthid5,NULL);
-
-		}
-		else
-			LOGERREX(__FILE__,__LINE__,"read config from database failed");
-	}
-	else
-		LOGERREX(__FILE__,__LINE__,"initialize database failed");
-
-	pthread_mutex_destroy(&infoMutex);  
-	pthread_mutex_destroy(&taskMutex);  
-	pthread_mutex_destroy(&calloutMutex);
-	pthread_mutex_destroy(&configMutex);
-	pthread_mutex_destroy(&clickDialMutex);
+	
 	return 0;
 }
 
