@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\libs\libesl\inc;D:\libs\pcre-8.37;$(IncludePath)</IncludePath>
+    <IncludePath>D:\libs\libesl\inc;D:\libs\pcre-8.37;D:\libs\pthreads-w32-2-7-0-release;$(IncludePath)</IncludePath>
     <LibraryPath>D:\libs\pcre-8.37\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -161,6 +161,7 @@
     <ClCompile Include="..\..\database\interface\sql_interface.cpp" />
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\nwaypbx\fs_ext.cpp" />
+    <ClCompile Include="..\..\nwaypbx\init_sys.cpp" />
     <ClCompile Include="..\..\nwaypbx\structdef.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +190,7 @@
     <ClInclude Include="..\..\database\interface\sql_interface.h" />
     <ClInclude Include="..\..\database\interface\stdafx.h" />
     <ClInclude Include="..\..\nwaypbx\fs_ext.h" />
+    <ClInclude Include="..\..\nwaypbx\init_sys.h" />
     <ClInclude Include="..\..\nwaypbx\statedef.h" />
     <ClInclude Include="..\..\nwaypbx\structdef.h" />
   </ItemGroup>
