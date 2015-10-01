@@ -22,7 +22,7 @@ Contributor(s):
 #include <esl.h>
 
 #include "nwaypbx/structdef.h"
- 
+#include "nwaypbx/init_sys.h"
 #include "common/log/log.h"
 #include "common/nway-lib/PcreCpp.h"
 //char guuid[128];
@@ -58,6 +58,48 @@ Pcre regexPcre;   ///唯一的一个pcre处理模块
 
 string BasePath;//主要是彩铃路径和存储路径
 int nOutsideLen = 8;
+
+int init_nwaypbx()
+{
+	int nway_res = 0;
+	do
+	{
+		if (!init_database())
+		{
+			nway_res = 1;
+			break;
+		}
+		else
+			LOGEX(__FILE__, __LINE__, "init database successed");
+		check_extension();
+		if (!check_dialplan())
+		{
+			nway_res = 1;
+			break;
+		}
+		else
+			LOGEX(__FILE__, __LINE__, "init check_dialplan testing successed");
+		check_dialplan_detail();
+		if (!check_base_config())
+		{
+			nway_res = 1;
+			break;
+		}
+		else
+			LOGEX(__FILE__, __LINE__, "init check_base_config testing successed");
+		check_ivr();
+		check_ivr_detail();
+		if (!check_esl_inboud())
+		{
+			nway_res = 1;
+			break;
+		}
+		else
+			LOGEX(__FILE__, __LINE__, "init esl inbound test successed");
+	} while (false);
+	return nway_res;
+}
+
 static inline void LogIntoFile(const char* eventname,const char* uuid1,const char* uuid2, const char* uuid3)
 {
 	 
@@ -111,7 +153,11 @@ int main(void)
 {
 	bool bSuccess=false;
 	start_log();
-	
+	if (init_nwaypbx()!0)
+	{
+		LOGEX(__FILE__, __LINE__, "init nway pbx failed");
+		return 1;
+	}
 	return 0;
 }
 
