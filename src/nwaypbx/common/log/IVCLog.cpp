@@ -17,7 +17,7 @@ Contributor(s):
 //#include <STAR/CORBA.h>
 #include "IVCLog.h"
 //#include "../fileoperator/include/diropr.h"
-#include "../common/NwayDef.h"
+#include "../nway-lib/NwayDef.h"
 
 
 CLog_T::CLog_T()

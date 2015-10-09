@@ -4,9 +4,9 @@
 #include <string>
 #include <list>
 #include <time.h>
-#include "../common/NwayDef.h"
+#include "../common/nway-lib/NwayDef.h"
 #include "statedef.h"
-#include <pcre.h>
+#include "../common/nway-lib/PcreCpp.h
 using namespace std;
 class NwayRing
 {

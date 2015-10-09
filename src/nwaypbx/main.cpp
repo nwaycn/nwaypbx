@@ -153,7 +153,7 @@ int main(void)
 {
 	bool bSuccess=false;
 	start_log();
-	if (init_nwaypbx()!0)
+	if (init_nwaypbx()!= 0)
 	{
 		LOGEX(__FILE__, __LINE__, "init nway pbx failed");
 		return 1;

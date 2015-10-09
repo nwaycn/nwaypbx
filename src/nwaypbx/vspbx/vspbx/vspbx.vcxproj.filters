@@ -34,6 +34,9 @@
     <Filter Include="database\configure">
       <UniqueIdentifier>{95a00d8b-29e3-41b7-bc47-3664d20ce7ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="nwaypbx">
+      <UniqueIdentifier>{c1cffef3-3c5e-4ab8-81e0-dd36b0d3596d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\main.cpp">
@@ -83,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="..\..\database\config\config.cpp">
       <Filter>database\configure</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nwaypbx\structdef.cpp">
+      <Filter>nwaypbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nwaypbx\fs_ext.cpp">
+      <Filter>nwaypbx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nwaypbx\init_sys.cpp">
+      <Filter>nwaypbx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +169,18 @@
     </ClInclude>
     <ClInclude Include="..\..\database\config\stdafx.h">
       <Filter>database\configure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nwaypbx\statedef.h">
+      <Filter>nwaypbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nwaypbx\structdef.h">
+      <Filter>nwaypbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nwaypbx\fs_ext.h">
+      <Filter>nwaypbx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nwaypbx\init_sys.h">
+      <Filter>nwaypbx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
