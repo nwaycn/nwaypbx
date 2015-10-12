@@ -160,8 +160,11 @@
     <ClCompile Include="..\..\database\interface\db_center.cpp" />
     <ClCompile Include="..\..\database\interface\sql_interface.cpp" />
     <ClCompile Include="..\..\main.cpp" />
+    <ClCompile Include="..\..\nwaypbx\DirectCall.cpp" />
     <ClCompile Include="..\..\nwaypbx\fs_ext.cpp" />
     <ClCompile Include="..\..\nwaypbx\init_sys.cpp" />
+    <ClCompile Include="..\..\nwaypbx\nwaydbload.cpp" />
+    <ClCompile Include="..\..\nwaypbx\NwayIVR.cpp" />
     <ClCompile Include="..\..\nwaypbx\structdef.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,8 +192,11 @@
     <ClInclude Include="..\..\database\interface\errerCode.h" />
     <ClInclude Include="..\..\database\interface\sql_interface.h" />
     <ClInclude Include="..\..\database\interface\stdafx.h" />
+    <ClInclude Include="..\..\nwaypbx\DirectCall.h" />
     <ClInclude Include="..\..\nwaypbx\fs_ext.h" />
     <ClInclude Include="..\..\nwaypbx\init_sys.h" />
+    <ClInclude Include="..\..\nwaypbx\nwaydbload.h" />
+    <ClInclude Include="..\..\nwaypbx\NwayIVR.h" />
     <ClInclude Include="..\..\nwaypbx\statedef.h" />
     <ClInclude Include="..\..\nwaypbx\structdef.h" />
   </ItemGroup>
