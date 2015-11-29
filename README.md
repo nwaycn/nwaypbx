@@ -10,6 +10,8 @@ email: lihao@nway.com.cn
 
 You can see demo:  http://121.40.240.104:8088/admin/  ,the username:lihao, password:123456
 
+Now we will develop a new version by GO LANG,It is in https://github.com/nwaycn/nwaypbx/tree/master/src/go_fs/fs_control
+
 Since the v0.1.0 version of the current binary uses a part of the third party's commercial library, it does not conform to the spirit of open source, so we will be it as a  open source pbx from modify we current code
 
 1. need you to install postgresql
