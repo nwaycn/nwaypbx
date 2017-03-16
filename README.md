@@ -1,3 +1,6 @@
+
+This project is replaced by FSGUI, FSGUI use Go lang develop,but it is not open source , http://www.6fok.com/topics/33  and https://github.com/nwaycn/FSGui
+
 # nwaypbx
 Our plan is to develop a first based on the Chinese PBX, and the world's first c/c++ with ESL control FreeSWITCH as a PBX, it is an open source project.
 
