@@ -1,15 +1,3 @@
-/*************************************************************************
-based for NwayPBX
-Copyright (C) 2015-, Li hao <lihao@nway.com.cn>
-License£º GPL
-author: Li hao
-email: lihao@nway.com.cn
-The Initial Developer of the Original Code is
-Li hao<lihao@nway.com.cn>
-Portions created by the Initial Developer are Copyright (C)
-the Initial Developer. All Rights Reserved.
-Contributor(s):
-**************************************************************************/
 #include "stdafx.h"
 #include "db_center.h"
 //#include "../../../common/Common.h"
@@ -29,7 +17,7 @@ db_center* db_center::get_instance()
 	return dbinstance;
 }
 
-DWORD db_center::Init(const char* host, const char* port, const char* dbname,const char* user_name,const char* pswd,unsigned short nDB )
+DWORD db_center::Init( const char* dbname,const char* user_name,const char* pswd,unsigned short nDB )
 {
 	if (psql_itfs)
 	{
@@ -41,7 +29,7 @@ DWORD db_center::Init(const char* host, const char* port, const char* dbname,con
 		psql_itfs = new sql_interface();
 		if (psql_itfs )
 		{
-			return psql_itfs->Init(host,port,dbname,user_name,pswd,nDB);
+			return psql_itfs->Init(dbname,user_name,pswd,nDB);
 		}
 	}
 	return 1;
@@ -69,7 +57,7 @@ DWORD db_center::Close()
 	return 0;
 }
 
-PGconn* db_center::GetConn()
+SAConnection* db_center::GetConn()
 {
 	return psql_itfs->getConn();
 }

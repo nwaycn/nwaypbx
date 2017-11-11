@@ -7,7 +7,7 @@
 #ifndef HCONF_H  
 #define HCONF_H  
 #ifdef WIN32  
-#include "unistd.h" 
+#include "../../unistd.h" 
 #else
 #include <unistd.h> 
 #endif
@@ -20,7 +20,7 @@
 #include <string.h>  
   
 typedef struct h_conf{  
-    char file_path[256];  
+    char file_path[200];  
 }HConf;  
   
 void init_conf(HConf *hconf, char *file_path);  

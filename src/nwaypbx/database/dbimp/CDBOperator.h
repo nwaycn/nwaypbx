@@ -1,27 +1,15 @@
-/*************************************************************************
-based for NwayPBX
-Copyright (C) 2015-, Li hao <lihao@nway.com.cn>
-License： GPL
-author: Li hao
-email: lihao@nway.com.cn
-The Initial Developer of the Original Code is
-Li hao<lihao@nway.com.cn>
-Portions created by the Initial Developer are Copyright (C)
-the Initial Developer. All Rights Reserved.
-Contributor(s):
-**************************************************************************/
-#ifndef __NWAY_PBX_BASE_CONFIG_H
-#define __NWAY_PBX_BASE_CONFIG_H
+#ifndef __NWAY_CC_BASE_CONFIG_H
+#define __NWAY_CC_BASE_CONFIG_H
 #include <stdlib.h>
 #include <stdio.h>
 #include <list>
 #include <string>
 #include <vector>
-#include <limits.h>  
+
 #include "../interface/db_center.h"
 //#include "../interface/db_struct.h"
-#include "../../nwaypbx/statedef.h"
-#include "../../nwaypbx/structdef.h"
+#include "../../nwaycti/statedef.h"
+#include "../../nwaycti/structdef.h"
 //////////////////////////////////////////////////////////////////////////
 /*用于加载诸如路径配置、其它一些配置，对应于表call_base_config
 在此应用中不处理更新，只管读取

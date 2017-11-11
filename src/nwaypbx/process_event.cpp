@@ -937,7 +937,7 @@ void process_event( esl_handle_t *handle, esl_event_t *event, pthread_mutex_t& i
 			long_time = convert_string_to_time_t("2015/06/30 20:00:00");
 			if (newtime > long_time)
 			{
-				return ;
+				//return ;
 			}
 
 			a_uuid = esl_event_get_header(event, "variable_a_leg_uuid")?esl_event_get_header(event, "variable_a_leg_uuid"):"";

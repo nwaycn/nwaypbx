@@ -1,0 +1,19 @@
+#include <stdio.h>  
+#include <stdlib.h>  
+  
+#include "hconf.h"  
+  
+int main()  
+{  
+    HConf *info = (HConf *) malloc(sizeof(HConf));  
+    init_conf(info,"./info.conf");  
+  
+    char buf[20];  
+    get_conf_value(info,"email",buf);  
+    printf("email = %s --get from info\n",buf);  
+  
+    set_conf_value(info,"age","115 years old");  
+    printf("set info:age = 115 years old\n");  
+  
+    return 0;  
+}  

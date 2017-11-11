@@ -3,7 +3,7 @@
 void init_conf(HConf *hconf, char *file_path)  
 {  
     int fd=open(file_path,O_RDONLY);  
-    if(fd>2){    
+    if(fd>2){   //确保文件存在  
         close(fd);  
         strcpy(hconf->file_path,file_path);  
     }else{  
@@ -64,7 +64,7 @@ int set_conf_value(HConf *hconf, char* key_name, char *value)
     int res;  
     int fd = open(hconf->file_path,O_RDONLY);  
     if(fd > 2){  
-        char buf[800];   
+        char buf[800];  //存储文件内容  
         res = 0;  
         char c;  
         char *ptrk=key_name;  
@@ -79,16 +79,16 @@ int set_conf_value(HConf *hconf, char* key_name, char *value)
             read(fd,&c,1);  
             *ptrb = c;  
         }while(c == *ptrk);  
-        if(c == '=' && *ptrk == '\0'){ 
+        if(c == '=' && *ptrk == '\0'){//找到目标行  
             do{  
             ptrb ++;  
             *ptrb = *ptrv;  
             ptrv ++;  
-            }while(*ptrv != '\0');   
-            while((read(fd,&c,1)) == 1 && c != '\n'); 
+            }while(*ptrv != '\0');   //将value赋值给buf  
+            while((read(fd,&c,1)) == 1 && c != '\n');//等号右边原来的内容舍弃  
             ptrb ++;  
             *ptrb = '\n';  
-        }else {    
+        }else {    //非目标行全部读取  
             while((read(fd,&c,1)) == 1){  
                 ptrb ++;  
             *ptrb = c;  
@@ -97,7 +97,7 @@ int set_conf_value(HConf *hconf, char* key_name, char *value)
             }  
             }  
         }  
-        }else{        
+        }else{        //非目标行全部读取  
             while((read(fd,&c,1)) == 1){  
             ptrb ++;  
             *ptrb = c;  
@@ -108,9 +108,9 @@ int set_conf_value(HConf *hconf, char* key_name, char *value)
         }  
         ptrb ++;  
     }  
-    *ptrb = '\0';  
+    *ptrb = '\0';  //循环结束，buf末尾置'\0'  
     close(fd);  
-    fd=open(hconf->file_path,O_WRONLY|O_TRUNC); 
+    fd=open(hconf->file_path,O_WRONLY|O_TRUNC);//截短打开文件，写入buf  
     if(fd > 2){  
         write(fd,buf,strlen(buf));  
         close(fd);  

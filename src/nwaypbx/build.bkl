@@ -48,7 +48,23 @@
     </template>
    
     
-     
+    <template id="sqlapi">
+        <debug-info>$(DEBUGINFO)</debug-info>
+        <debug-runtime-libs>$(DEBUGRUNTIME)</debug-runtime-libs>
+        <optimize>$(OPTIMIZEFLAG)</optimize>
+	<warnings>$(WARNINGS)</warnings>
+
+        <if cond="FORMAT=='msvc'">
+		<include>D:\libs\sqlapi\include</include>
+	        <lib-path>D:\libs\sqlapi\lib</lib-path>        
+        </if>
+        <if cond="FORMAT=='gnu'">
+            	<include>/home/works/calloutcenter/nwaycc/SQLAPI/include</include>
+	        <lib-path>/usr/local/lib64</lib-path>
+        </if>
+        <runtime-libs>$(RUNTIMELIBRARY)</runtime-libs>
+        
+    </template>
 
     <template id="mfc">
         <debug-info>$(DEBUGINFO)</debug-info>
@@ -70,8 +86,15 @@
    
     <exe id="nwaycc" template="sqlapi,esl">
         <app-type>console</app-type>
-	 
-	    <sources>$(fileList('*.cpp'))</sources>
+	<sources>$(fileList('common/*.cpp'))</sources>
+	<sources>$(fileList('database/*.cpp'))</sources>
+	<sources>$(fileList('database/dbimp/*.cpp'))</sources>
+	<sources>$(fileList('database/interface/*.cpp'))</sources>
+	<sources>$(fileList('database/config/*.cpp'))</sources>
+	<sources>$(fileList('log/*.cpp'))</sources>
+	<sources>$(fileList('nwaycc/*.cpp'))</sources>
+	<sources>$(fileList('nwaycti/*.cpp'))</sources>
+	<sources>$(fileList('*.cpp'))</sources>
         <debug-info>$(DEBUGINFO)</debug-info>
         <debug-runtime-libs>$(DEBUGRUNTIME)</debug-runtime-libs>
         <optimize>$(OPTIMIZEFLAG)</optimize>
@@ -87,12 +110,12 @@
         <if cond="FORMAT=='gnu'">
             
             <sys-lib>pq</sys-lib>
-	        <sys-lib>sqlapi</sys-lib>
+	    <sys-lib>sqlapi</sys-lib>
             <sys-lib>pcre</sys-lib>
-	        <sys-lib>pthread</sys-lib>
-	        <sys-lib>esl</sys-lib>
-	        <sys-lib>m</sys-lib>
-	        <sys-lib>dl</sys-lib>
+	    <sys-lib>pthread</sys-lib>
+	    <sys-lib>esl</sys-lib>
+	    <sys-lib>m</sys-lib>
+	    <sys-lib>dl</sys-lib>
         </if>
 	
         

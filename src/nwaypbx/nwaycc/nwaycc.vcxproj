@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A28473B0-4421-4B36-96B1-D33E1FCC62FE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>nwaycc</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\libs\pcre;C:\libs\pthread\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\libs\pcre\lib;C:\libs\esl\lib;C:\libs\pthread\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4996;4091</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;esl.lib;libpcre.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Check_Content.cpp" />
+    <ClCompile Include="..\common\base64.cpp" />
+    <ClCompile Include="..\common\File.cpp" />
+    <ClCompile Include="..\common\Lock.cpp" />
+    <ClCompile Include="..\common\Mutex.cpp" />
+    <ClCompile Include="..\common\NwayDef.cpp" />
+    <ClCompile Include="..\common\NwayStr.cpp" />
+    <ClCompile Include="..\common\PcreCpp.cpp" />
+    <ClCompile Include="..\common\Semaphore.cpp" />
+    <ClCompile Include="..\database\config\config.cpp" />
+    <ClCompile Include="..\database\dbimp\CDBOperator.cpp" />
+    <ClCompile Include="..\database\dbimp\dbcallout.cpp" />
+    <ClCompile Include="..\database\interface\db_center.cpp" />
+    <ClCompile Include="..\database\interface\sql_interface.cpp" />
+    <ClCompile Include="..\log\IVCLog.cpp" />
+    <ClCompile Include="..\log\log.cpp" />
+    <ClCompile Include="..\log\NwayLog.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\nwaycti\DirectCall.cpp" />
+    <ClCompile Include="..\nwaycti\fs_ext.cpp" />
+    <ClCompile Include="..\nwaycti\inbound_global.cpp" />
+    <ClCompile Include="..\nwaycti\nwaycti.cpp" />
+    <ClCompile Include="..\nwaycti\NwayIVR.cpp" />
+    <ClCompile Include="..\nwaycti\structdef.cpp" />
+    <ClCompile Include="..\process_event.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\callin\callin.h" />
+    <ClInclude Include="..\callout\callout.h" />
+    <ClInclude Include="..\Check_Content.h" />
+    <ClInclude Include="..\common\base64.hpp" />
+    <ClInclude Include="..\common\File.h" />
+    <ClInclude Include="..\common\IFile.h" />
+    <ClInclude Include="..\common\IMutex.h" />
+    <ClInclude Include="..\common\Lock.h" />
+    <ClInclude Include="..\common\Mutex.h" />
+    <ClInclude Include="..\common\NwayDef.h" />
+    <ClInclude Include="..\common\NwayStr.h" />
+    <ClInclude Include="..\common\PcreCpp.h" />
+    <ClInclude Include="..\common\Semaphore.h" />
+    <ClInclude Include="..\common\stdafx.h" />
+    <ClInclude Include="..\database\config\config.h" />
+    <ClInclude Include="..\database\dbimp\CDBOperator.h" />
+    <ClInclude Include="..\database\dbimp\dbcallout.h" />
+    <ClInclude Include="..\database\interface\dbInclude.h" />
+    <ClInclude Include="..\database\interface\db_center.h" />
+    <ClInclude Include="..\database\interface\db_struct.h" />
+    <ClInclude Include="..\database\interface\errerCode.h" />
+    <ClInclude Include="..\database\interface\sql_interface.h" />
+    <ClInclude Include="..\log\IVCLog.h" />
+    <ClInclude Include="..\log\log.h" />
+    <ClInclude Include="..\log\NwayLog.h" />
+    <ClInclude Include="..\log\stdafx.h" />
+    <ClInclude Include="..\nwaycti\DirectCall.h" />
+    <ClInclude Include="..\nwaycti\fs_ext.h" />
+    <ClInclude Include="..\nwaycti\inbound_global.h" />
+    <ClInclude Include="..\nwaycti\nwaycti.h" />
+    <ClInclude Include="..\nwaycti\NwayIVR.h" />
+    <ClInclude Include="..\nwaycti\statedef.h" />
+    <ClInclude Include="..\nwaycti\structdef.h" />
+    <ClInclude Include="..\process_event.h" />
+    <ClInclude Include="..\SQLAPI\include\SQLAPI.h" />
+    <ClInclude Include="..\unistd.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
