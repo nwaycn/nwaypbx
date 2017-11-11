@@ -1,0 +1,12 @@
+命令如下:
+
+python -c "import compileall; compileall.compile_dir('目录')" 
+可以对一个目录进行编译处理的!
+该命令可以为一个目录下的py文件生成pyc文件（包含子目录）在windows平台上的路径书写方式为
+
+('C:/python26/pyc') 
+下面符一完整命令: 将目录'C:/python26/pyc'下的所有PY文件 转为PYC文件
+
+?[Copy to clipboard]Download test.py1  
+python -c "import compileall; compileall.
+compile_dir('C:/python26/pyc')"    

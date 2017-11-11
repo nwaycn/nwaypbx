@@ -1,0 +1,10 @@
+wget https://github.com/vslavik/bakefile/archive/v0.2.9.tar.gz
+
+./configure && make && make install
+
+ *** 没有规则可以创建目标“install”或 "all"。 停止。
+make时遇到故障
+echo "all:" >doc/Makefile
+make install时遇到故障
+
+echo "install:" >doc/Makefile

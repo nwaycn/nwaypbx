@@ -1,0 +1,10 @@
+1. 在sqlapi/src下编译，修改sqlapi_gcc下增加
+SA_64BIT=1 
+SA_OS=SA_LINUX
+
+,具体项参考最前边的说明，同时在编译时，要注意两个问题，只能把不用的全注释掉，一次只编译一个CMAKE的项。
+把每次编译的so或.a文件copy到/usr/local/lib64下
+2. # cat /etc/ld.so.conf
+include ld.so.conf.d/*.conf
+# echo "/usr/local/lib64" >> /etc/ld.so.conf
+# ldconfig

@@ -1,0 +1,29 @@
+安装前确认zlib是否安装？没安装 请yum install zlib zlib-devel
+wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+tar zxvf Python-2.7.3.tgz
+cd Python-2.7.3
+./configure --prefix=/usr && make && make install
+(也可以考虑不覆盖老版本，自行定义安装路径，最后做软链接)
+ 
+安装完毕，但会发现CentOS yum需要系统自带的2.4版本，主要一定修改yum，否则会导致yum不能使用。 
+vi /usr/bin/yum
+ 第1行
+#!/usr/bin/python修改为：#!/usr/bin/python2.4
+
+ wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.py -O - | python 有关证书的，不然无法下载安装
+
+
+pip install Django==1.6.5
+
+easy_install psycopg2
+
+
+然后安装EasyInstall
+wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-p2y2.7.egg
+sh setuptools-0.6c11-p2y2.7.egg
+yum -y install python-setuptools
+
+curl https://bootstrap.pypa.io/ez_setup.py | python 
+安装完成后就可以直接使用easy_install命令安装第三方Python开发包了，例如：easy_install SQLObject 
+全部自动完成，不用一个个去找egg了。
+wget https://bootstrap.pypa.io/ez_setup.py -O - | python

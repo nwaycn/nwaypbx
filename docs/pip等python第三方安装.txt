@@ -1,0 +1,9 @@
+yum -y install python-setuptools
+
+easy_install pip
+
+ImportError: No module named pkg_resources 会报这个错
+
+pip install Django==1.6.5
+
+easy_install psycopg2
